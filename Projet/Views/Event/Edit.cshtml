@@ -1,0 +1,311 @@
+﻿@model Projet.Models.EventModel
+@using Microsoft.AspNet.Identity
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>User Profile </title>
+    <meta name="author" content="Jake Rocheleau">
+    <link rel="shortcut icon" href="http://designshack.net/favicon.ico">
+    <link rel="icon" href="http://designshack.net/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="all" href="@Url.Content("~/Content/cssprofil/styles.css")">
+    <script type="text/javascript" src="@Url.Content("~/Content/jsprofil/jquery-1.10.2.min.js")"></script>
+
+</head>
+<body>
+    <div id="body-bg">
+        <ul class="social-icons pull-right hidden-xs">
+            <li class="social-rss">
+                <a href="#" target="_blank" title="RSS"></a>
+            </li>
+            <li class="social-twitter">
+                <a href="#" target="_blank" title="Twitter"></a>
+            </li>
+            <li class="social-facebook">
+                <a href="https://www.facebook.com/groups/1391877770839774/?fref=ts" target="_blank" title="Facebook"></a>
+            </li>
+            <li class="social-googleplus">
+                <a href="#" target="_blank" title="GooglePlus"></a>
+            </li>
+        </ul>
+        <div id="pre-header" class="container" style="height:340px">
+        </div>
+        <div id="header">
+            <div class="container">
+                <div class="row">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index.html" title="">
+                            <img src=@Url.Content("~/Content/img/logo.png") alt="Logo" />
+                        </a>
+                    </div>
+                    <!-- End Logo -->
+                </div>
+            </div>
+        </div>
+        <!-- Top Menu -->
+        <div id="hornav" class="container no-padding">
+            <div class="row">
+                <div class="col-md-12 no-padding">
+                    <div class="text-center visible-lg">
+                        <ul id="hornavmenu" class="nav navbar-nav">
+                            <li>
+                                @Html.ActionLink("Home", "Index", "Home")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Pages", "Index", "Page")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Offers", "Index", "Offer")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Events", "Index", "Event")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Contact", "Contact", "Home")
+                            </li>
+                            @Html.Partial("_LoginPartial")
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Menu -->
+
+        <br />
+        <br />
+        <!-- === END HEADER === -->
+        <div id="content-top-border" class="container">
+        </div>
+
+
+
+        <div class="container background-white">
+
+            <div id="w">
+                <div id="content" class="clearfix">
+                    <div id="userphoto"><img src="~/Content/img/@Html.DisplayFor(model => model.ImageUrl)" alt="user image"></div>
+                    <h1>  Event Details  </h1>
+
+
+                    <section id="info">
+                        <table>
+                            @using (Html.BeginForm("Edit", "Event", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                            { @Html.AntiForgeryToken()
+
+
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.IdEvent)
+
+
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.nameEvent, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.nameEvent, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.nameEvent, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+                                    <tr>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.startDateEvent, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.startDateEvent, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.startDateEvent, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </tr>
+                                    <tr>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.endDateEvent, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.endDateEvent, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.endDateEvent, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.priceEvent, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.priceEvent, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.priceEvent, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </tr>
+                
+                                    <tr>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBox("Image", null, new { type = "file" })
+                                                @Html.ValidationMessageFor(model => model.ImageUrl)
+                                            </div>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <div class="form-group" >
+
+                                            @Html.LabelFor(model => model.TouristicPlaceId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownListFor(model => model.TouristicPlaceId, Model.TouristicPlaces, new { @id = "ddlTest", @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.TouristicPlaceId)
+                                            </div>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Save" class="btn btn-default" />
+                                            </div>
+                                        </div>
+                                    </tr>
+                            }
+                        </table>
+
+
+
+                        </section>
+
+
+
+
+
+                    </div>
+                    <script type="text/javascript">
+$(function(){
+  $('#profiletabs ul li a').on('click', function(e){
+    e.preventDefault();
+    var newcontent = $(this).attr('href');
+
+    $('#profiletabs ul li a').removeClass('sel');
+    $(this).addClass('sel');
+
+    $('#content section').each(function(){
+      if(!$(this).hasClass('hidden')) { $(this).addClass('hidden'); }
+    });
+
+    $(newcontent).removeClass('hidden');
+  });
+});
+                    </script>
+
+
+                </div>
+            </div>
+            <div id="content-top-border" class="container">
+            </div>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+
+
+            <!-- === BEGIN FOOTER === -->
+
+            <div id="base">
+                <div class="container padding-vert-30 margin-top-60">
+                    <div class="row">
+                        <!-- Contact Details -->
+                        <div class="col-md-4 margin-bottom-20">
+                            <h3 class="margin-bottom-10">Contact Details</h3>
+                            <p>
+                                <span class="fa-phone">Telephone:</span>(212)888-77-88
+                                <br>
+                                <span class="fa-envelope">Email:</span>
+                                <a href="mailto:info@joomla51.com">info@joomla51.com</a>
+                                <br>
+                                <span class="fa-link">Website:</span>
+                                <a href="http://www.joomla51.com">www.joomla51.com</a>
+                            </p>
+                            <p>
+                                The Dunes, Top Road,
+                                <br>Strandhill,
+                                <br>Co. Sligo,
+                                <br>Ireland
+                            </p>
+                        </div>
+                        <!-- End Contact Details -->
+                        <!-- Sample Menu -->
+                        <div class="col-md-3 margin-bottom-20">
+                            <h3 class="margin-bottom-10">Sample Menu</h3>
+                            <ul class="menu">
+                                <li>
+                                    <a class="fa-tasks" href="#">Placerat facer possim</a>
+                                </li>
+                                <li>
+                                    <a class="fa-users" href="#">Quam nunc putamus</a>
+                                </li>
+                                <li>
+                                    <a class="fa-signal" href="#">Velit esse molestie</a>
+                                </li>
+                                <li>
+                                    <a class="fa-coffee" href="#">Nam liber tempor</a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <!-- End Sample Menu -->
+                        <div class="col-md-1"></div>
+                        <!-- Disclaimer -->
+                        <div class="col-md-3 margin-bottom-20 padding-vert-30 text-center">
+                            <h3 class="color-gray margin-bottom-10">Join our Newsletter</h3>
+                            <p>
+                                Sign up for our newsletter for all the
+                                <br>latest news and information
+                            </p>
+                            <input type="email">
+                            <br>
+                            <button class="btn btn-primary btn-lg margin-top-20" type="button">Subscribe</button>
+                        </div>
+                        <!-- End Disclaimer -->
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Menu -->
+            <!-- End Footer Menu -->
+            <!-- JS -->
+            <script type="text/javascript" src=@Url.Content("~/Content/js/jquery.min.js") type="text/javascript"></script>
+            <script type="text/javascript" src=@Url.Content("~/Content/js/bootstrap.min.js") type="text/javascript"></script>
+            <script type="text/javascript" @Url.Content("~/Content/js/scripts.js")></script>
+            <!-- Isotope - Portfolio Sorting -->
+            <script type="text/javascript" @Url.Content("~/Content/js/jquery.isotope.js") type="text/javascript"></script>
+            <!-- Mobile Menu - Slicknav -->
+            <script type="text/javascript" @Url.Content("~/Content/js/jquery.slicknav.js") type="text/javascript"></script>
+            <!-- Animate on Scroll-->
+            <script type="text/javascript" @Url.Content("~/Content/js/jquery.visible.js") charset="utf-8"></script>
+            <!-- Sticky Div -->
+            <script type="text/javascript" @Url.Content("~/Content/js/jquery.sticky.js") charset="utf-8"></script>
+            <!-- Slimbox2-->
+            <script type="text/javascript" @Url.Content("~/Content/js/slimbox2.js") charset="utf-8"></script>
+            <!-- Modernizr -->
+            <script @Url.Content("~/Content/js/modernizr.custom.js") type="text/javascript"></script>
+            <!-- End JS -->
+
+
+
+        </body>
+
+

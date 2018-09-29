@@ -1,0 +1,19 @@
+﻿@model Projet.Models.EventModel
+
+<div>
+    <h4>EventModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <div id="content" class="clearfix">
+            <div id="w">
+                <div width="50px">
+                    <div id="userphoto"><img src="~/Content/img/@Html.DisplayFor(model => model.ImageUrl)" alt="user image"></div>
+
+                    <p>
+                        Here you can book for this event &nbsp;&nbsp;&nbsp;<br /> <a href='@Url.Action("Reserver", "ReservationEvent")'><img alt="reserver" src="~/Content/img/reserver.png"></a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        </div>

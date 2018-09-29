@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>@ViewBag.Title -Travel&Trip advicer</title>
+
+
+    <!-- Meta -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!-- Favicon -->
+    <link href="@Url.Content("~/Content/img/icon.png")" rel="shortcut icon">
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap.css")" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/animate.cs")" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/font-awesome.css")" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/nexus.css")" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/responsive.csss")" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/custom.css")" rel="stylesheet">
+    <!-- Google Fonts-->
+    <!--<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:800,600" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans" type="text/css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:800,600" rel="stylesheet" type="text/css">-->
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/fonts")
+    @Styles.Render("~/Content/img")
+    @Styles.Render("~/Content/js")
+    @Styles.Render("~/Content/less")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <!-- JS -->
+    <script type="text/javascript" src=@Url.Content("~/Content/js/jquery.min.js") type="text/javascript"></script>
+    <script type="text/javascript" src=@Url.Content("~/Content/js/bootstrap.min.js") type="text/javascript"></script>
+    <script type="text/javascript" @Url.Content("~/Content/js/scripts.js")></script>
+    <!-- Isotope - Portfolio Sorting -->
+    <script type="text/javascript" @Url.Content("~/Content/js/jquery.isotope.js") type="text/javascript"></script>
+    <!-- Mobile Menu - Slicknav -->
+    <script type="text/javascript" @Url.Content("~/Content/js/jquery.slicknav.js") type="text/javascript"></script>
+    <!-- Animate on Scroll-->
+    <script type="text/javascript" @Url.Content("~/Content/js/jquery.visible.js") charset="utf-8"></script>
+    <!-- Sticky Div -->
+    <script type="text/javascript" @Url.Content("~/Content/js/jquery.sticky.js") charset="utf-8"></script>
+    <!-- Slimbox2-->
+    <script type="text/javascript" @Url.Content("~/Content/js/slimbox2.js") charset="utf-8"></script>
+    <!-- Modernizr -->
+    <script @Url.Content("~/Content/js/modernizr.custom.js") type="text/javascript"></script>
+    <!-- End JS -->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <center>
+                <p>&copy; @DateTime.Now.Year /2017 - Pidev Esprit - DMS team</p>
+            </center>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

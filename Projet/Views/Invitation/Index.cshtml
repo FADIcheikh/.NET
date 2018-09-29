@@ -1,0 +1,31 @@
+﻿@model Projet.Models.InvitationModels
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nomUser)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.listeuser)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+                <a href='@Url.Action("inviter", "Invitation", new { e=ViewBag.Message})'><img alt="view" src="~/Content/img/icon.png"></a>
+
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+
